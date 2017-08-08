@@ -1,4 +1,6 @@
 package Vista;
+import bsh.EvalError;
+import bsh.Interpreter;
 
 /**
  * Ejercicio: Calculadora sencilla - Implementar la Interfaz de usuario -
@@ -16,7 +18,17 @@ public class Main {
 	 * @param args the command line arguments
 	 */
 	public static void main(String[] args) {
-		VentanaCalculadora calculadora = new VentanaCalculadora();
-		calculadora.setVisible(true);
+	//	VentanaCalculadora calculadora = new VentanaCalculadora();
+	//	calculadora.setVisible(true);
+		Interpreter interpreter = new Interpreter();
+		try {
+			interpreter.eval("result = 2+2*3/1.2");
+			System.out.println(interpreter.get("result"));
+			
+		}
+		catch(EvalError e) 
+		{
+			e.printStackTrace();
+		}
 	}
 }
